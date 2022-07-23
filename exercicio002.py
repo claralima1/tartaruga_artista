@@ -10,12 +10,13 @@ Exercícios
 import turtle
 
 turtle = turtle.Turtle()
-turtle.color('red')
-turtle.forward(100)
+turtle.shape('circle')
+turtle.color('#BA55D3')
+turtle.forward(50)
 turtle.left(90)
-turtle.forward(100)
+turtle.forward(50)
 turtle.left(90)
-turtle.forward(100)
+turtle.forward(50)
 turtle.left(90)
-turtle.forward(100)
+turtle.forward(50) 
 
