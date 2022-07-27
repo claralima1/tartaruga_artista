@@ -6,10 +6,13 @@ Exercicios:
 """
 
 import turtle
+import random
 
 turtle = turtle.Turtle()
+colors = ['purple', 'blue', 'orange', 'green', 'pink', '#00FF7F', '#008080']
 
 for c in range(360):
-    turtle.color('red')
-    turtle.forward(1)
+    color = random.choice(colors)
+    turtle.color(color)
+    turtle.forward(3)
     turtle.right(1)
