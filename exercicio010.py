@@ -14,16 +14,19 @@ turtle = turtle.Turtle()
 for _ in range(4):
     turtle.forward(100)
     turtle.right(90)
+    turtle.color('#008080') 
 
 for _ in range(4):
    turtle.left(90)
    turtle.forward(100)
+   turtle.color('#00FF7F')
 
 for _ in range(4):
    turtle.forward(100)
    turtle.left(90)
+   turtle.color('purple')
 
 for _ in range(4):
    turtle.right(90)
    turtle.forward(100)
-
+   turtle.color('orange')
