@@ -8,7 +8,7 @@ ss3. Complete rectangle.
 5. Add width parameter.
 """
 
-from turtle import setup, onkey, onscreenclick, listen, up, goto, down, begin_fill, end_fill, done, undo, forward, backward, left, right, color
+from turtle import pensize, setup, onkey, onscreenclick, listen, up, goto, down, begin_fill, end_fill, done, undo, forward, backward, left, right, color
 from freegames import vector
   
 
@@ -18,6 +18,7 @@ def line(start, end):
     goto(start.x, start.y)
     down()
     goto(end.x, end.y)
+    pensize(50)
 
 
 def square(start, end):
@@ -111,6 +112,7 @@ def tap(x, y):
         end = vector(x, y)
         shape(start, end)
         state['start'] = None
+
 
 
 def store(key, value):
