@@ -22,3 +22,8 @@ Cada lado deve medir 100 pixels.
 ```turtle.right(90)```
 
 [Próximo](02_diamante.md)
+ import turtle 
+ turtle = turtle.Turtle()
+ turtle.forward(100)
+ turtle.left(90)
+ turtle.right(90)
