@@ -2,7 +2,7 @@ from turtle import *
 
 from freegames import vector
 
-class StatePen():
+class StatePen:
     def __init__(self, position_x, position_y):
         self.position = goto(position_x, position_y)
 
@@ -11,10 +11,8 @@ class StatePen():
         goto(start.x, start.y)
         goto(end.x, end.y)
 
-    def tap( x, y):
-        state = {'start': None, 'shape': None}
+    def tap(x, y):
         start = state['start']
-        state['start'] = None
 
         if start is None:
             state['start'] = vector(x, y)
@@ -22,14 +20,22 @@ class StatePen():
             shape = state['shape']
             end = vector(x, y)
             shape(start, end)
-    onscreenclick(tap)
+            state['start'] = None
 
-    def store(key, value):
-        state[key] = value
+
+def store(key, value):
+    state[key] = value
+
+s = StatePen()
+state = {'start': None, 'shape': s.line()}
+
+
 
 class Shapes():
-    def __init__(self, position_x, position_y):
-        self.position = goto(position_x, position_y)
+    def __init__(self):
+        self.position = goto()
+
+   
 
     def square(start, end):
         up()
@@ -87,15 +93,23 @@ class Shapes():
 
         end_fill() 
 
-setup(420, 420, 370, 0)
+def init():
+    setup(420, 420, 370, 0)
+    listen()
+    done()
+
+if __name__ == '__main__':
+    init()
      
-listen()
 onkey(undo, 'u')
+class PenColor:
+    def __init__ (self):
+        self.cor = 
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
 onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
-done()
+
         
         
