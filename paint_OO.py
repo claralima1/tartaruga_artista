@@ -104,12 +104,12 @@ if __name__ == '__main__':
 onkey(undo, 'u')
 class PenColor:
     def __init__ (self):
-        self.cor = 
-onkey(lambda: color('black'), 'K')
-onkey(lambda: color('white'), 'W')
-onkey(lambda: color('green'), 'G')
-onkey(lambda: color('blue'), 'B')
-onkey(lambda: color('red'), 'R')
+        
+        onkey(lambda: store('shape', s.line()), 'l')
+        onkey(lambda: store('shape', s.square()), 's')
+        onkey(lambda: store('shape', s.circle()), 'c')
+        onkey(lambda: store('shape', s.rectangle()), 'r')
+        onkey(lambda: store('shape', s.triangle()), 't')
 
         
         
