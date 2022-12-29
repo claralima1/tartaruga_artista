@@ -3,37 +3,41 @@ from turtle import *
 from freegames import vector
 
 class StatePen:
-    def __init__(self, position_x, position_y):
-        self.position = goto(position_x, position_y)
+    def __init__(self, start, end):
+        self.start = state['start']
 
-    def line(start, end):
-        up()
-        goto(start.x, start.y)
-        goto(end.x, end.y)
-
-    def tap(x, y):
-        start = state['start']
-
-        if start is None:
+    def tap(self, x, y):
+        if self.start is None:
             state['start'] = vector(x, y)
         else:
             shape = state['shape']
-            end = vector(x, y)
-            shape(start, end)
+            self.end = vector(x, y)
+            shape(self.start, self.end)
             state['start'] = None
 
 
+ 
 def store(key, value):
     state[key] = value
 
-s = StatePen()
-state = {'start': None, 'shape': s.line()}
+
 
 
 
 class Shapes():
     def __init__(self):
-        self.position = goto()
+       
+        onkey(lambda: store(self.line()), 'l')  
+        onkey(lambda: store(self.square()), 's')
+        onkey(lambda: store(self.circle()), 'c')
+        onkey(lambda: store(self.rectangle()), 'r')
+        onkey(lambda: store(self.triangle()), 't')
+
+    def line(self, start, end):
+        up()
+        goto(start.x, start.y)
+        goto(end.x, end.y)
+        down()
 
    
 
@@ -93,23 +97,15 @@ class Shapes():
 
         end_fill() 
 
+ 
+    state = {'start': None, 'shape': line()}    
+onkey(undo, 'u')
+
 def init():
     setup(420, 420, 370, 0)
     listen()
-    done()
+    mainloop()
 
 if __name__ == '__main__':
-    init()
-     
-onkey(undo, 'u')
-class PenColor:
-    def __init__ (self):
-        
-        onkey(lambda: store('shape', s.line()), 'l')
-        onkey(lambda: store('shape', s.square()), 's')
-        onkey(lambda: store('shape', s.circle()), 'c')
-        onkey(lambda: store('shape', s.rectangle()), 'r')
-        onkey(lambda: store('shape', s.triangle()), 't')
-
-        
+    init()        
         
