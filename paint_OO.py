@@ -1,41 +1,45 @@
 from turtle import *
+t = Turtle()
 
 from freegames import vector
 
+
 class Shapes:
     def __init__(self):
-        self.tap()
-        self.store()
-        self.drawn()
+        self.state = {'start': None, 'shape': l.drawn()}
 
-    def tap(x, y):
+    def tap(self, x, y):
 
-        start = state['start']
+        self.start = state['start']
 
         if start is None:
-            state['start'] = vector(x, y)
+            self.state['start'] = vector(self.x, self.y)
         else:
-            shape = state['shape']
-            end = vector(x, y)
-            shape(start, end)
-            state['start'] = None
-
-
+            self.shape = state['shape']
+            self.end = vector(self.x, self.y)
+            self.shape(self.start, self.end)
+            self.state['start'] = None
 
     def store(key, value):
-    
-        state[key] = value
+        self.state[key] = value
+        
+s = Shapes()
+onscreenclick(s.tap())
 
-
-state = {'start': None, 'shape': line}
-
-class line(Shapes):
-    def __init__(self, start, end):
-        up()
-        goto(start.x, start.y)
-        down()
-        goto(end.x, end.y)
-
+class Line(Shapes):
+    def __init__(self):
+        self.state = {'start': None, 'shape': self.l.drawn()}
+        
+    def drawn(self, start, end):
+        self.t.up()
+        self.t.goto(self.start.x, self.start.y)
+        self.t.down()
+        self.t.goto(self.end.x, self.end.y)
+            
+l = Line()
+setup(420, 420, 370, 0)
+listen()
+done()
 
 
         

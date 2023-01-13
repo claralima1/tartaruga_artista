@@ -123,7 +123,7 @@ def store(key, value):
 state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
-listen()
+setup(420, 420, 370, 0)
 onkey(undo, 'u')
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
