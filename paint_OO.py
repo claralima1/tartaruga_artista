@@ -118,9 +118,9 @@ class Rectangle(Shape):
             turtle.left(90)
         
         turtle.end_fill() 
-
-line = Line()
+        
 shape = Shape()
+line = Line()
 triangle = Triangle() 
 square = Square()
 circle = Circle()
