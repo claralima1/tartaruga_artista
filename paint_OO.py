@@ -2,9 +2,7 @@ import turtle
 from turtle import *
 from freegames import vector
 
-#Classe Line
 class Shape:
- 
   state={'start': None, 'shape': 'line'}
  
   def __init__(self):
@@ -13,10 +11,11 @@ class Shape:
        
   def tap (self,x,y):  
     start = self.state['start']
+
     if start is None:
       self.state['start'] = vector(x, y)
+
     else:
-      #shape = self.state['shape']
       end = vector(x, y)
       self.draw(start, end)
       self.state['start'] = None
@@ -34,12 +33,13 @@ class Shape:
     turtle.onkey(lambda: square.draw(), 's')
     turtle.onkey(lambda: circle.draw(), 'c')
     turtle.onkey(lambda: rectangle.draw(), 'r')
+    turtle.onkey(lambda: line.draw(), 'l')
     turtle.done()
 
 class Line(Shape):
     def __init__(self):
         super().__init__()
-
+        
     def draw(self, start, end):
         turtle.up()
         turtle.goto(start.x, start.y)
@@ -52,16 +52,14 @@ class Triangle(Shape):
 
     def draw(self, start, end):
         turtle.up()
-        turtle.goto(start.x, start.y)
-        turtle.goto(end.x, end.y)
+        turtle.goto(shape.tap(start.x, start.y))
+        turtle.goto(shape.tap(end.x, end.y))
         turtle.down()
 
         turtle.begin_fill()
-
         for count in range(3):
             turtle.forward(end.x - start.x)
             turtle.left(120)
-
         turtle.end_fill() 
 
 class Square(Shape):
@@ -71,14 +69,12 @@ class Square(Shape):
     def draw(self, start, end):
         turtle.up()
         turtle.goto(start.x, start.y)
-        turtledown()
+        turtle.down()
 
         turtle.begin_fill()
-
         for count in range(4):
             turtle.forward(end.x - start.x)
             turtle.left(90)
-
         turtle.end_fill()
 
 class Circle(Shape):
@@ -93,11 +89,9 @@ class Circle(Shape):
         turtle.down()
 
         turtle.begin_fill()
-
         for count in range(360):
             turtle.forward(end.x - start.x)
             turtle.left(1)
-
         turtle.end_fill()
 
 class Rectangle(Shape):
@@ -111,12 +105,10 @@ class Rectangle(Shape):
         turtle.down()
 
         turtle.begin_fill()
-
         for count in range(4):
             turtle.forward(end.x - start.x)
             turtle.forward(end.x - start.x)
             turtle.left(90)
-        
         turtle.end_fill() 
         
 shape = Shape()
