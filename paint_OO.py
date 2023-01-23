@@ -2,9 +2,7 @@ import turtle
 from turtle import *
 from freegames import vector
 
-#Classe Line
 class Shape:
- 
   state={'start': None, 'shape': 'line'}
  
   def __init__(self):
@@ -13,10 +11,11 @@ class Shape:
        
   def tap (self,x,y):  
     start = self.state['start']
+
     if start is None:
       self.state['start'] = vector(x, y)
+
     else:
-      
       end = vector(x, y)
       self.draw(start, end)
       self.state['start'] = None
@@ -38,7 +37,7 @@ class Shape:
 class Line(Shape):
     def __init__(self):
         super().__init__()
-
+        
     def draw(self, start, end):
         turtle.up()
         turtle.goto(start.x, start.y)
@@ -51,8 +50,8 @@ class Triangle(Shape):
 
     def draw(self, start, end):
         turtle.up()
-        turtle.goto(start.x, start.y)
-        turtle.goto(end.x, end.y)
+        turtle.goto(shape.tap(start.x, start.y))
+        turtle.goto(shape.tap(end.x, end.y))
         turtle.down()
 
         turtle.begin_fill()
