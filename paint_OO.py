@@ -16,24 +16,23 @@ class Shape:
     if start is None:
       self.state['start'] = vector(x, y)
     else:
-      #shape = self.state['shape']
+      
       end = vector(x, y)
       self.draw(start, end)
       self.state['start'] = None
 
   def listen(self):
     turtle.listen()
-    turtle.onkey(lambda: turtle.color('black'), 'K')#botão para mudar de cor
-    turtle.onkey(lambda: turtle.color('white'), 'W')#botão para mudar de cor
-    turtle.onkey(lambda: turtle.color('green'), 'G')#botão para mudar de cor
-    turtle.onkey(lambda: turtle.color('blue'), 'B')#botão para mudar de cor
-    turtle.onkey(lambda: turtle.color('red'), 'R')#botão para mudar de cor
-    turtle.onkey(lambda: turtle.color('purple'), 'P')#botão para mudar de cor
-    turtle.onkey(lambda: turtle.color('orange'), 'O')#botão para mudar de cor
-    turtle.onkey(lambda: triangle.draw(), 't')
-    turtle.onkey(lambda: square.draw(), 's')
-    turtle.onkey(lambda: circle.draw(), 'c')
-    turtle.onkey(lambda: rectangle.draw(), 'r')
+    turtle.onkey(lambda: turtle.color('black'), 'K')
+    turtle.onkey(lambda: turtle.color('white'), 'W')
+    turtle.onkey(lambda: turtle.color('green'), 'G')
+    turtle.onkey(lambda: turtle.color('blue'), 'B')
+    turtle.onkey(lambda: turtle.color('red'), 'R')
+    turtle.onkey(lambda: square.draw(turtle.onscreenclick(square.tap)), 's')
+    turtle.onkey(lambda: circle.draw(turtle.onscreenclick(circle.tap)  ), 'c')
+    turtle.onkey(lambda: rectangle.draw(turtle.onscreenclick(rectangle.tap)), 'r')
+    turtle.onkey(lambda: triangle.draw(turtle.onscreenclick(triangle.tap)), 't')
+    turtle.onkey(lambda: triangle.draw(turtle.onscreenclick(line.tap)), 'l')
     turtle.done()
 
 class Line(Shape):
@@ -57,11 +56,9 @@ class Triangle(Shape):
         turtle.down()
 
         turtle.begin_fill()
-
         for count in range(3):
             turtle.forward(end.x - start.x)
             turtle.left(120)
-
         turtle.end_fill() 
 
 class Square(Shape):
@@ -71,18 +68,15 @@ class Square(Shape):
     def draw(self, start, end):
         turtle.up()
         turtle.goto(start.x, start.y)
-        turtledown()
+        turtle.down()
 
         turtle.begin_fill()
-
         for count in range(4):
             turtle.forward(end.x - start.x)
             turtle.left(90)
-
         turtle.end_fill()
 
 class Circle(Shape):
-
     def __init__(self):
         super().__init__()
 
@@ -93,11 +87,9 @@ class Circle(Shape):
         turtle.down()
 
         turtle.begin_fill()
-
         for count in range(360):
             turtle.forward(end.x - start.x)
             turtle.left(1)
-
         turtle.end_fill()
 
 class Rectangle(Shape):
@@ -111,12 +103,10 @@ class Rectangle(Shape):
         turtle.down()
 
         turtle.begin_fill()
-
         for count in range(4):
             turtle.forward(end.x - start.x)
             turtle.forward(end.x - start.x)
             turtle.left(90)
-        
         turtle.end_fill() 
         
 shape = Shape()
@@ -126,5 +116,5 @@ square = Square()
 circle = Circle()
 rectangle = Rectangle()
 turtle.setup(420, 420, 370, 0)
-turtle.onscreenclick(line.tap) 
+turtle.onscreenclick(line.tap)  
 shape.listen()
