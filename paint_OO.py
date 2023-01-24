@@ -27,11 +27,11 @@ class Shape:
     turtle.onkey(lambda: turtle.color('green'), 'G')
     turtle.onkey(lambda: turtle.color('blue'), 'B')
     turtle.onkey(lambda: turtle.color('red'), 'R')
-    turtle.onkey(lambda: square.draw(turtle.onscreenclick(square.tap)), 's')
-    turtle.onkey(lambda: circle.draw(turtle.onscreenclick(circle.tap)  ), 'c')
-    turtle.onkey(lambda: rectangle.draw(turtle.onscreenclick(rectangle.tap)), 'r')
-    turtle.onkey(lambda: triangle.draw(turtle.onscreenclick(triangle.tap)), 't')
-    turtle.onkey(lambda: triangle.draw(turtle.onscreenclick(line.tap)), 'l')
+    turtle.onkey(lambda: turtle.onscreenclick(square.tap), 's')
+    turtle.onkey(lambda: turtle.onscreenclick(circle.tap), 'c')
+    turtle.onkey(lambda: turtle.onscreenclick(rectangle.tap), 'r')
+    turtle.onkey(lambda: turtle.onscreenclick(triangle.tap), 't')
+    turtle.onkey(lambda: turtle.onscreenclick(line.tap), 'l')
     turtle.done()
 
 class Line(Shape):
@@ -50,8 +50,8 @@ class Triangle(Shape):
 
     def draw(self, start, end):
         turtle.up()
-        turtle.goto(shape.tap(start.x, start.y))
-        turtle.goto(shape.tap(end.x, end.y))
+        turtle.goto(start.x, start.y)
+        turtle.goto(end.x, end.y)
         turtle.down()
 
         turtle.begin_fill()
